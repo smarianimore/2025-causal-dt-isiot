@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <title>Pervasive Causal Discovery @ CoMoReA 2024</title>
+    <meta content="Talk 'Distributed Discovery of Causal Networks in Pervasive Environments' given by Stefano Mariani at CoMoReA 2024" name="description">
+    <meta content="Stefano Mariani" name="author">
+
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <link rel="stylesheet" href="reveal.js/dist/reset.css" />
+    <link rel="stylesheet" href="reveal.js/dist/reveal.css" />
+    <link rel="stylesheet" href="reveal.js/dist/theme/white.css" id="theme" />
+
+    <!-- Theme used for syntax highlighted code -->
+    <link
+      rel="stylesheet"
+      href="reveal.js/plugin/highlight/monokai.css"
+      id="highlight-theme"
+    />
+
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+      document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+
+        <section data-transition="convex" data-background-image="res/percom-home.png" data-background-opacity=0.25 data-background-size="cover">
+          <section>
+            <p>
+              <small><em>Workshop on Context and Activity Modelling and Recognition</em> <br> Biarritz, France, 11/3/2024 </small>
+            </p>
+            <hr>
+            <br>
+            <h3> Distributed Discovery of Causal Networks in Pervasive Environments </h3>
+            <hr>
+            <p> <a href="https://smarianimore.github.io">Stefano Mariani</a>, Franco Zambonelli </p>
+            <p>
+              <small><em> University of Modena and Reggio Emilia </em></small>
+            </p>
+          </section>
+          <section data-markdown data-background-image="res/percom-home.png" data-background-opacity=0.25 data-background-size="cover">
+            <script type="text/template">
+              <style>
+                .container{
+                  display: flex;
+                }
+                .col{
+                  flex: 1;
+                }
+              </style>
+              <p>
+                <small><strong> Distributed Discovery of Causal Networks in Pervasive Environments </strong></small>
+              </p>
+              <hr>
+              <div class="container">
+                <div class="col">
+                  <img data-src="res/qrcode_smarianimore.github.io.png">
+                </div>
+                <div class="col">
+                  <br>
+                  <br>
+                  Scan QR code :)
+                  <br>
+                  <br>
+                  <ul><small>
+                    <li> Browse slides yourself at your own pace </li>
+                    <li> Navigation buttons at bottom right </li>
+                    <li> Scroll all the way down first, then right </li>
+                    <li> If on desktop, &lt;Esc&gt; to enter/exit overview </li>
+                  </small></ul>
+                </div>
+              </div>
+              <hr>
+              <p><small><em> <a href="https://smarianimore.github.io">Stefano Mariani</a>, Franco Zambonelli </em></small></p>
+            </script>
+          </section>
+        </section>
+
+        <section data-transition="convex">
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              <!-- .slide: data-background-image="res/motivations.jpg" data-background-opacity="0.15" data-background-size="contain" -->
+              ## Motivation
+              ----
+
+              * Achieving goals in pervasive environments requires **context awareness** to adapt to environment dynamics
+            </script>
+          </section>
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              <!-- .slide: data-background-image="res/motivations.jpg" data-background-opacity="0.15" data-background-size="contain" -->
+              ## Motivation
+              ----
+
+              * Achieving goals in pervasive environments requires **context awareness** to adapt to environment dynamics
+              * **Causal models** (i.e. networks of cause-effect relations)
+                - can deliver such awareness
+                - express causation, not mere correlation
+                - uniformly enable prediction, "what-if" analysis, planning, diagnosis, explainability
+            </script>
+          </section>
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              <!-- .slide: data-background-image="res/motivations.jpg" data-background-opacity="0.15" data-background-size="contain" -->
+              ## Motivation
+              ----
+
+              * We embed causal models in software programs all the time!
+                - e.g. `IF cause THEN effects`
+                - e.g. `cause.callback(effects)`
+                - e.g. `belief :- intention.`
+            </script>
+          </section>
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              <!-- .slide: data-background-image="res/motivations.jpg" data-background-opacity="0.15" data-background-size="contain" -->
+              ## Motivation
+              ----
+
+              * We embed causal models in software programs all the time!
+                - e.g. `IF cause THEN effects`
+                - e.g. `cause.callback(effects)`
+                - e.g. `belief :- intention.`
+              * Requires *design-time, expert, domain knowledge*
+            </script>
+          </section>
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              <!-- .slide: data-background-image="res/motivations.jpg" data-background-opacity="0.15" data-background-size="contain" -->
+              ## Motivation
+              ----
+
+              * We embed causal models in software programs all the time!
+                - e.g. `IF cause THEN effects`
+                - e.g. `cause.callback(effects)`
+                - e.g. `belief :- intention.`
+              * Requires *design-time, expert, domain knowledge*
+
+              <p style="color: red"> <em>What if that's not available?</em> </p>
+            </script>
+          </section>
+
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              <!-- .slide: data-background-image="res/learn.jpg" data-background-opacity="0.15" data-background-size="contain" -->
+              ## Goal
+              ----
+
+              **Learn** causal networks at **run-time**!
+            </script>
+          </section>
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              <!-- .slide: data-background-image="res/learn.jpg" data-background-opacity="0.15" data-background-size="contain" -->
+              ## Goal
+              ----
+
+              **Learn** causal networks at **run-time**!
+
+              * Called **causal discovery** in related literature
+                - assumes *full observability* of environment...
+                - ...by an *individual* processing node...
+                - ...aimed at learning the *Global Causal Network* (GCN)---whole environment
+            </script>
+          </section>
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              <!-- .slide: data-background-image="res/learn.jpg" data-background-opacity="0.15" data-background-size="contain" -->
+              ## Goal
+              ----
+
+              **Learn** causal networks at **run-time**!
+
+              * Called **causal discovery** in related literature
+                - assumes *full observability* of environment...
+                - ...by an *individual* processing node...
+                - ...aimed at learning the *Global Causal Network* (GCN)---whole environment
+
+              <p style="color: red"> <em>What if that's not feasible?</em> </p>
+            </script>
+          </section>
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              <!-- .slide: data-background-image="res/distributed.jpg" data-background-opacity="0.15" data-background-size="cover" -->
+              ## Motivation
+              ----
+
+              * Pervasive computing infrastructures are **distributed** in nature
+                - sensors and actuators scattered in the environment
+                - 3-tier processing architecture from Edge-to-Cloud
+                - processing nodes have **partial observability/control**
+            </script>
+          </section>
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              <!-- .slide: data-background-image="res/distributed.jpg" data-background-opacity="0.15" data-background-size="cover" -->
+              ## Motivation
+              ----
+
+              * Pervasive computing infrastructures are **distributed** in nature
+                - sensors and actuators scattered in the environment
+                - 3-tier processing architecture from Edge-to-Cloud
+                - processing nodes have **partial observability/control**
+              * *Individual Causal Networks* (ICNs) do not account for *influences* amongst nodes
+            </script>
+          </section>
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              <!-- .slide: data-background-image="res/learn.jpg" data-background-opacity="0.15" data-background-size="cover" -->
+              ## Goal
+              ----
+
+              <p style="color: green"> Learn a <strong>Minimal Causal Network</strong> (MCN) with multiple nodes with partial observability/control! </p>
+
+              <img data-src="res/2024-comorea-causal-mas-scenario-v2.png" width="70%">
+            </script>
+          </section>
+
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              <!-- .slide: data-background-image="res/contribution.jpg" data-background-opacity="0.15" data-background-size="contain" -->
+              ## Contribution
+              ----
+
+              **Collaborative multi-node protocol for distributed causal discovery**
+
+              1. formulate learning and coordination problems
+              2. describe collaborative learning protocol
+              3. evaluate accuracy of MCN against ICN and GCN
+            </script>
+          </section>
+        </section>
+
+        <section data-transition="convex">
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              <!-- .slide: data-background-image="res/causal-discovery.jpg" data-background-opacity="0.15" data-background-size="cover" -->
+              ## Preliminaries
+              ----
+
+              * Causal models capture cause-effect relationships in *networks* of interacting variables
+              * Purely statistical ML approaches capture mere *correlation*, instead
+            </script>
+          </section>
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              <!-- .slide: data-background-image="res/causal-discovery.jpg" data-background-opacity="0.15" data-background-size="cover" -->
+              ## Preliminaries
+              ----
+
+              * Causal models capture cause-effect relationships in *networks* of interacting variables
+              * Purely statistical ML approaches capture mere *correlation*, instead
+
+              Cornerstone to causal discovery is the notion of **intervention**
+            </script>
+          </section>
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              <!-- .slide: data-background-image="res/causal-discovery.jpg" data-background-opacity="0.15" data-background-size="cover" -->
+              ## Preliminaries
+              ----
+
+              * Intuition:
+                - act on a variable *all others being untouched*
+                - observe changes
+                - infer cause-effect relation accordingly
+            </script>
+          </section>
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              <!-- .slide: data-background-image="res/causal-discovery.jpg" data-background-opacity="0.15" data-background-size="cover" -->
+              ## Preliminaries
+              ----
+
+              * Intuition:
+                - act on a variable *all others being untouched*
+                - observe changes of other variables
+                - infer cause-effect relation accordingly
+              * Formalised as do operator $do(X=x)$
+                - $\mathcal{P}(Temp) \neq \mathcal{P}(Temp | do(AC=on))$
+                - $\mathcal{P}(AC) = \mathcal{P}(AC | do(Temp=t))$
+            </script>
+          </section>
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              <!-- .slide: data-background-image="res/causal-discovery.jpg" data-background-opacity="0.15" data-background-size="cover" -->
+              ## Preliminaries
+              ----
+
+              * Off-the-shelf algorithm for *individual* discovery$^*$
+                1. start with fully connected network of variables
+                2. for each edge, try to remove or orient it through interventions
+                3. whenever (2) impossible, try to remove edges using independence tests (e.g. $\chi^2$)
+                4. for the possibly remaining edges, heuristic procedures can be tried$^*$
+
+              <p style="color: grey"> <small>$^*$ K. Fadiga, E. Houze, A. Diaconescu, and J. Dessalles, <a href="https://doi.org/10.1109/ACSOS52086.2021.00030">"To do or not to do: finding causal relations in smart homes" </a></small> </p>
+            </script>
+          </section>
+          <!--<section data-markdown data-auto-animate>
+            <script type="text/template">
+              <!-- .slide: data-background-image="res/causal-discovery.jpg" data-background-opacity="0.15" data-background-size="cover" -->
+              <!--## Preliminaries
+              ----
+
+              * Intervention requires **control** (e.g. actuators, not sensors!)
+            </script>
+          </section>
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              <!-- .slide: data-background-image="res/causal-discovery.jpg" data-background-opacity="0.15" data-background-size="cover" -->
+               <!--Preliminaries
+              ----
+
+              * Intervention requires **control** (e.g. actuators, not sensors!)
+              * Causal discovery possible even with no control
+                - *identifiability conditions* (i.e. assumptions on variables) must hold
+                - e.g. no cycles, no unknown confounders, constraints on stationarity, ...
+            </script>
+          </section>
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              <!-- .slide: data-background-image="res/causal-discovery.jpg" data-background-opacity="0.15" data-background-size="cover" -->
+              <!--## Preliminaries
+              ----
+
+              * Intervention requires **control** (e.g. actuators, not sensors!)
+              * Causal discovery possible even with no control
+                - *identifiability conditions* (i.e. assumptions on variables) must hold
+                - e.g. no cycles, no unknown confounders, constraints on stationarity, ...
+
+              Learnt causal model can be conveniently represented as a DAG (a network)
+            </script>
+          </section>-->
+        </section>
+
+        <section data-transition="convex">
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              ## Problem setting
+              ----
+
+              <img data-src="res/2024-comorea-causal-mas-scenario-v2.png">
+            </script>
+          </section>
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              <!-- .slide: data-background-image="res/2024-comorea-causal-mas-scenario-v2.png" data-background-opacity="0.1" data-background-size="cover" -->
+              ## Problem setting
+              ----
+
+              <style>
+                .container{
+                  display: flex;
+                }
+                .col-grow{
+                  flex-grow: 0.9;
+                }
+                .col-shrink{
+                  flex-shrink: 1;
+                }
+              </style>
+              <div class="container">
+                <div class="col-grow">
+                  <img data-src="res/2024-comorea-causal-mas-scenario-v2.png">
+                  <p class="fragment" data-fragment-index="2"><small>MCN = Minimal Causal Network,
+                    ICN = Individual Causal Network
+                    GCN = Global Causal Network</small></p>
+                </div>
+                <div class="col-shrink">
+                  <ul><small>
+                    <li> Multiple Fog nodes having each <strong>partial observability</strong> over sensors and actuators </li>
+                    <li class="fragment" data-fragment-index="2"> Each wants to learn its <strong>MCN = ICN + causal links with others' sensors and actuators</strong> </li>
+                    <li class="fragment"> GCN not needed but obtainable from MCNs </li>
+                    <li class="fragment"> Each node has algorithm to learn ICN (in isolation) </li>
+                    <li class="fragment"> Network is not partitioned </li>
+                    <li class="fragment"> Nodes trust each other </li>
+                  </small></ul>
+                </div>
+              </div>
+            </script>
+          </section>
+        </section>
+
+        <section data-transition="convex">
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              ## Learning protocol: main
+              ----
+
+              <img data-src="res/protocol-main.png" width="50%">
+            </script>
+          </section>
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              ## Learning protocol: main
+              ----
+
+              <style>
+                .container{
+                  display: flex;
+                }
+                .col-grow{
+                  flex-grow: 1;
+                }
+                .col-shrink{
+                  flex-shrink: 1;
+                }
+              </style>
+              <div class="container">
+                <div class="col-grow">
+                  <img data-src="res/protocol-main.png" width="90%">
+                </div>
+                <div class="col-shrink">
+                  <br>
+                  <br>
+                  <small><ul>
+                    <li> Node $\mathcal{N}_i$ asks for help by sending variables to other nodes $\mathcal{N}_{j \neq i}$ </li>
+                    <li> $\mathcal{N}_i$ collects replies </li>
+                      <ul>
+                        <li> causal sub-network if variable known to $\mathcal{N}_j$ </li>
+                        <li> start intervention sub-protocol </li>
+                      </ul>
+                    <li> In parallel $\mathcal{N}_i$ can help others </li>
+                      <ul>
+                        <li> if received variable known, send sub-network </li>
+                        <li> if unknown, start intervention sub-protocol </li>
+                      </ul>
+                  </ul></small>
+                </div>
+              </div>
+            </script>
+          </section>
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              ## Learning protocol: sub
+              ----
+
+              <img data-src="res/protocol-sub.png" width="70%">
+            </script>
+          </section>
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              ## Learning protocol: sub
+              ----
+
+              <style>
+                .container{
+                  display: flex;
+                }
+                .col-grow{
+                  flex-grow: 1;
+                }
+                .col-shrink{
+                  flex-shrink: 1;
+                }
+              </style>
+              <div class="container">
+                <div class="col-grow">
+                  <img data-src="res/protocol-sub.png">
+                </div>
+                <div class="col-shrink">
+                  <br>
+                  <small><ul>
+                    <li> If variable actuated by $\mathcal{N}_j$ </li>
+                    <ul>
+                      <li> $\mathcal{N}_j$ intervenes </li>
+                      <li> $\mathcal{N}_i$ observes </li>
+                    </ul>
+                    <li> If variable not actuated $\mathcal{N}_j$ </li>
+                    <ul>
+                      <li> $\mathcal{N}_i$ intervenes on own actuators (one at atime) while $\mathcal{N}_j$ observes </li>
+                      <li> $\mathcal{N}_j$ sends past sensor data (for independence tests) </li>
+                    </ul>
+                  </ul></small>
+                </div>
+              </div>
+            </script>
+          </section>
+        </section>
+
+        <section data-transition="convex">
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              ## Evaluation scenario
+              ----
+
+              <img data-src="res/icasa-fog.png" width="33%">
+            </script>
+          </section>
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              ## Evaluation scenario
+              ----
+
+              <style>
+                .container{
+                  display: flex;
+                }
+                .col{
+                  flex: 1;
+                }
+              </style>
+              <div class="container">
+                <div class="col">
+                  <img data-src="res/ground-truth-partitioned.png">
+                </div>
+                <div class="col">
+                  <img data-src="res/icasa-fog.png" width="60%">
+                </div>
+              </div>
+            </script>
+          </section>
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              ## Evaluation scenario
+              ----
+
+              <style>
+                .container{
+                  display: flex;
+                }
+                .col{
+                  flex: 1;
+                }
+              </style>
+              <div class="container">
+                <div class="col">
+                  <img data-src="res/ground-truth-partitioned.png">
+                </div>
+                <div class="col">
+                  <img data-src="res/icasa-fog.png" width="40%">
+                </div>
+              </div>
+              <ul>
+                <li> Ground truth GCN of <a href="https://self-star.imag.fr/">iCasa</a> (simulated) smart home </li>
+                <li> 2 Fog nodes: "red" (girl, $\mathcal{N}_1$) and "blue" (boy, $\mathcal{N}_2$) </li>
+                <li> Circles are actuators and boxes are sensors </li>
+              </ul>
+            </script>
+          </section>
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              <!-- .slide: data-background-image="res/metrics.jpg" data-background-opacity="0.15" data-background-size="contain" -->
+              ## Performance metrics
+              ----
+
+              * **false positives** (FP): learnt edges not in ground truth (GT)
+              * **false negatives** (FN): edges in GT but not learnt
+              * (extended) **Structural Hamming Distance** (SHD): FP + FN + unknowns (missing edges as crossing partial observability boundaries)
+              * **time**: to learn network (ICN, MCN, or GCN)
+            </script>
+          </section>
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              ## Results: MCN vs ICN, node $\mathcal{N}_1$
+              ----
+
+              <div class="r-stack">
+                <img data-src="res/ICN-1.png" height="70%">
+                <p class="fragment fade-out" data-fragment-index="2"><strong>ICN</strong> <br><br><br><br><br><br><br><br><br><br><br> </p>
+                <img class="fragment" data-fragment-index="2" data-src="res/MCN-1.png" height="70%">
+                <p class="fragment fade-in" data-fragment-index="2"><strong>MCN</strong> <br><br><br><br><br><br><br><br><br><br><br> </p>
+              </div>
+            </script>
+          </section>
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              ## Results: MCN vs ICN, node $\mathcal{N}_1$
+              ----
+
+              <style>
+                .container{
+                  display: flex;
+                }
+                .col{
+                  flex: 1;
+                }
+              </style>
+              <div class="container">
+                <div class="col">
+                  <img data-src="res/ICN-1.png">
+                </div>
+                <div class="col">
+                  <img data-src="res/MCN-1.png">
+                </div>
+              </div>
+              <div class="container">
+                <div class="col">
+                  <ul>
+                    <li> FP$_{ICN}$ = FP$_{MCN}$ = 0 </li>
+                    <li> FN$_{ICN}$ = FN$_{MCN}$ = 0 </li>
+                  </ul>
+                </div>
+                <div class="col">
+                  <ul>
+                    <li> SHD$_{ICN}$ = 2 <br> > SHD$_{MCN}$ = 0 <br> $\implies MCN$ better </li>
+                  </ul>
+                </div>
+              </div>
+            </script>
+          </section>
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              ## Results: MCN vs ICN, node $\mathcal{N}_2$
+              ----
+
+              <div class="r-stack">
+                <img data-src="res/ICN-2.png" height="80%">
+                <p class="fragment fade-out" data-fragment-index="2"><strong>ICN</strong> <br><br><br><br><br><br><br><br><br><br><br> </p>
+                <img class="fragment" data-fragment-index="2" data-src="res/MCN-2.png" height="80%">
+                <p class="fragment fade-in" data-fragment-index="2"><strong>MCN</strong> <br><br><br><br><br><br><br><br><br><br><br> </p>
+              </div>
+            </script>
+          </section>
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              ## Results: MCN vs ICN, node $\mathcal{N}_2$
+              ----
+
+              <style>
+                .container{
+                  display: flex;
+                }
+                .col{
+                  flex: 1;
+                }
+              </style>
+              <div class="container">
+                <div class="col">
+                  <img data-src="res/ICN-2.png">
+                </div>
+                <div class="col">
+                  <img data-src="res/MCN-2.png">
+                </div>
+              </div>
+              <div class="container">
+                <div class="col">
+                  <ul>
+                    <li> FP$_{ICN}$ = FP$_{MCN}$ </li>
+                    <li> FN$_{ICN}$ = 1 > FN$_{MCN}$ = 0 </li>
+                  </ul>
+                </div>
+                <div class="col">
+                  <ul>
+                    <li> SHD$_{ICN}$ = 4 <br> > SHD$_{MCN}$ = 1 <br> $\implies MCN$ better </li>
+                  </ul>
+                </div>
+              </div>
+            </script>
+          </section>
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              ### Results: MCN$_1 \cap $MCN$_2$ vs GCN
+              ----
+
+              <style>
+                .container{
+                  display: flex;
+                }
+                .col{
+                  flex: 1;
+                }
+              </style>
+              <div class="container">
+                <div class="col">
+                  <img data-src="res/MCN-1.png">
+                </div>
+                <div class="col">
+                  <img data-src="res/MCN-2.png">
+                </div>
+              </div>
+            </script>
+          </section>
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              ### Results: MCN$_1 \cap $MCN$_2$ vs GCN
+              ----
+
+              <div class="r-stack">
+                <img data-src="res/MCN-1.png" height="70%">
+                <img data-src="res/MCN-2.png" height="70%">
+                <img data-src="res/GCN-m.png" height="70%">
+                <p><strong>GCN$_m$</strong> (intersection = edge in both MCNs!) <br><br><br><br><br><br><br><br><br><br><br> </p>
+              </div>
+            </script>
+          </section>
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              ### Results: MCN$_1 \cap $MCN$_2$ vs GCN
+              ----
+
+              <style>
+                .container{
+                  display: flex;
+                }
+                .col{
+                  flex: 1;
+                }
+              </style>
+              <div class="container">
+                <div class="col">
+                  <div class="r-stack">
+                    <img data-src="res/GCN-c.png">
+                    <p><strong>GCN$_c$</strong> <br><br><br><br><br><br><br><br> </p>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="r-stack">
+                    <img data-src="res/GCN-m.png">
+                    <p><strong>GCN$_m$</strong> <br><br><br><br><br><br><br><br> </p>
+                  </div>
+                </div>
+              </div>
+              <div class="container">
+                <div class="col">
+                  <small><ul>
+                    <li> FP$_{GCN_c}$ = 10 > FP$_{GCN_m} = 0$ </li>
+                    <li> FN$_{GCN_c}$ = 2 > FN$_{GCN_m}$ = 1 </li>
+                  </ul></small>
+                </div>
+                <div class="col">
+                  <small><ul>
+                    <li> SHD$_{GCN_c}$ = 12 > SHD$_{GCN_m}$ = 1 <br> $\implies GCN_m$ better </li>
+                  </ul></small>
+                </div>
+              </div>
+            </script>
+          </section>
+        </section>
+
+        <section data-transition="convex">
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              <!-- .slide: data-background-image="res/coordination-issues.jpg" data-background-opacity="0.15" data-background-size="70%" -->
+              <h2 style="color: red"> Coordination issues </h2>
+
+              ----
+
+              * Interventions must be done *one at a time, all other conditions being equal*, by definition
+              <ul><small>
+                <li> calls for <strong>distributed mutual exclusion</strong> </li>
+                <li> which node gets attention? which node does interventions? </li>
+                <li> no ground truth $\implies$ no heuristic $\implies$ <strong>global</strong> mutual exclusion </li>
+              </small></ul>
+            </script>
+          </section>
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              <!-- .slide: data-background-image="res/coordination-issues.jpg" data-background-opacity="0.15" data-background-size="70%" -->
+              <h2 style="color: red"> Coordination issues </h2>
+
+              ----
+
+              * Interventions must be done *one at a time, all other conditions being equal*, by definition
+              <ul><small>
+                <li> calls for <strong>distributed mutual exclusion</strong> </li>
+                <li> which node gets attention? which node does interventions? </li>
+                <li> no ground truth $\implies$ no heuristic $\implies$ <strong>global</strong> mutual exclusion </li>
+              </small></ul>
+              * Interventions in real world (actuators) may *take time*
+              <ul><small>
+                <li> calls for intervention-observation time window </li>
+                <li> <strong>negotiation</strong> of duration and frequency </li>
+              </small></ul>
+            </script>
+          </section>
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              <!-- .slide: data-background-image="res/coordination-issues.jpg" data-background-opacity="0.15" data-background-size="70%" -->
+              <h2 style="color: red"> Coordination issues </h2>
+
+              ----
+
+              * Interventions must be done *one at a time, all other conditions being equal*, by definition
+              <ul><small>
+                <li> calls for <strong>distributed mutual exclusion</strong> </li>
+                <li> which node gets attention? which node does interventions? </li>
+                <li> no ground truth $\implies$ no heuristic $\implies$ <strong>global</strong> mutual exclusion </li>
+              </small></ul>
+              * Interventions in real world (actuators) may *take time*
+              <ul><small>
+                <li> calls for intervention-observation time window </li>
+                <li> <strong>negotiation</strong> of duration and frequency </li>
+              </small></ul>
+
+              Exacerbated as no. of nodes $\rightarrow \infty$ <br> and network topology $\neq$ fully connected
+            </script>
+          </section>
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              <!-- .slide: data-background-image="res/coordination.jpg" data-background-opacity="0.15" data-background-size="contain" -->
+              ## Coordination protocol
+              ----
+
+              * If Cloud node available, centralised coordinator
+              - route help requests (or, connect nodes)
+              - decides which node gets attention
+              - orchestrates interventions
+              - decides intervention time window
+            </script>
+          </section>
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              <!-- .slide: data-background-image="res/coordination.jpg" data-background-opacity="0.15" data-background-size="contain" -->
+              ## Coordination protocol
+              ----
+
+              * If Cloud node available, centralised coordinator
+              - route help requests (or, connect nodes)
+              - decides which node gets attention
+              - orchestrates interventions
+              - decides intervention time window
+
+              <p style="color: red"> <em>What if that's not available?</em> </p>
+            </script>
+          </section>
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              <!-- .slide: data-background-image="res/coordination.jpg" data-background-opacity="0.15" data-background-size="contain" -->
+              ## Coordination protocol
+              ----
+
+              * 4-stages, *fully decentralised* coordination protocol
+              1. diffuse help requests $\rightarrow$ **gossiping**
+              2. who gets attention $\rightarrow$ **leader election**
+              3. who does intervention $\rightarrow$ **token ring**
+              4. agree on time window $\rightarrow$ **negotiation**
+            </script>
+          </section>
+        </section>
+
+        <section data-transition="convex">
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              <!-- .slide: data-background-image="res/conclusion.jpg" data-background-opacity="0.25" data-background-size="cover" -->
+              ## Conclusion
+              ----
+
+              * Collaboration deals with partial observability and **improves** individually learnt causal networks
+            </script>
+          </section>
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              <!-- .slide: data-background-image="res/conclusion.jpg" data-background-opacity="0.25" data-background-size="cover" -->
+              ## Conclusion
+              ----
+
+              * Collaboration deals with partial observability and **improves** individually learnt causal networks
+              * Merging improved networks (the MCNs) can lead to **better GCN** than learning with full observability
+            </script>
+          </section>
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              <!-- .slide: data-background-image="res/conclusion.jpg" data-background-opacity="0.25" data-background-size="cover" -->
+              ## Conclusion
+              ----
+
+              * Collaboration deals with partial observability and **improves** individually learnt causal networks
+              * Merging improved networks (the MCNs) can lead to **better GCN** than learning with full observability
+              * Mutual exclusion amongst interventions can be dealt with even in **fully decentralised** settings with SOTA methods (gossiping, leader election, ...)
+            </script>
+          </section>
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              <!-- .slide: data-background-image="res/crossroad.jpg" data-background-opacity="0.25" data-background-size="cover" -->
+              ## Outlook
+              ----
+
+              * Assess performance with **increasing agents**
+              * Assess convergence properties of **coordination protocol** in fully decentralised setting
+              * Benchmark against known causal networks of **increasing complexity**
+              * Assess impact of different individual learning algorithms on collaboration performance
+            </script>
+          </section>
+        </section>
+
+        <section data-transition="convex" data-background-image="res/confused-meme.png" data-background-opacity=0.25 data-background-size="cover">
+          <h3> Thanks </h3>
+          <h3> for your attention </h3>
+          <hr>
+          <p><a href="mailto:stefano.mariani@unimore.it"> Stefano Mariani </a></p>
+          <hr>
+          <style>
+            .container{
+              display: flex;
+            }
+            .col{
+              flex: 1;
+            }
+          </style>
+          <div class="container">
+            <div class="col">
+              <br>
+              <p><strong>Questions welcome :)</strong></p>
+            </div>
+            <div class="col">
+              <img width="65%" data-src="res/qrcode_smarianimore.github.io.png">
+            </div>
+            <div class="col">
+              <br>
+              <p>$\Leftarrow$ get these slides :)</p>
+            </div>
+          </div>
+          <p>(also: <em>we are having fun, join us!</em>)</p>
+        </section>
+
+      </div>
+    </div>
+
+    <script src="reveal.js/dist/reveal.js"></script>
+    <script src="reveal.js/plugin/notes/notes.js"></script>
+    <script src="reveal.js/plugin/markdown/markdown.js"></script>
+    <script src="reveal.js/plugin/highlight/highlight.js"></script>
+    <script src="reveal.js/plugin/zoom/zoom.js"></script>
+    <script src="reveal.js/plugin/math/math.js"></script>
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+        hash: true,
+        progress: true,
+        slideNumber: true,
+        //autoSlide: 3000,
+        transition: "convex",
+        backgroundTransition: "fade",
+        pdfSeparateFragments: false,
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom, RevealMath],
+      });
+    </script>
+  </body>
+</html>
