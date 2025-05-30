@@ -1,7 +1,7 @@
 # READ ME
 
-Talk *'Distributed Discovery of Causal Networks in Pervasive Environments'* given by [Stefano Mariani](https://smarianimore.github.io) at [CoMoReA 2024](https://sites.google.com/view/comorea24/program?authuser=0), PerCom workshop. 
-Slides here: [https://smarianimore.github.io/2024-comorea-causal-mas/](https://smarianimore.github.io/2024-comorea-causal-mas/)
+Talk *'Towards Intelligent Monitoring and Control of Industrial Internet of Things Deployments with Causality-aware Digital Twins'* given by [Stefano Mariani](https://smarianimore.github.io) at [ISIoT 2025](https://sites.google.com/view/isiot-2025), DCOSS-IoT workshop. 
+Slides here: [https://smarianimore.github.io/2025-causal-dt-isiot/](https://smarianimore.github.io/2025-causal-dt-isiot/)
 
 # Credits
 
