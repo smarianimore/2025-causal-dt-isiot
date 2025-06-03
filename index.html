@@ -39,7 +39,7 @@
     <div class="reveal">
       <div class="slides">
 
-        <section data-transition="convex" data-background-image="res/isiot-home.png" data-background-opacity=0.25 data-background-size="cover">
+        <section data-transition="convex" data-background-image="res/isiot-home.png" data-background-opacity=0.15 data-background-size="cover">
           <section>
             <p>
               <small><em>7th International Workshop on Intelligent Systems for the Internet of Things</em> <br> Lucca, Italy, 9/6/2025 </small>
@@ -53,7 +53,7 @@
               <small><em> Department of Sciences and Methods for Engineering, University of Modena and Reggio Emilia </em></small>
             </p>
           </section>
-          <section data-markdown data-background-image="res/percom-home.png" data-background-opacity=0.25 data-background-size="cover">
+          <section data-markdown data-background-image="res/percom-home.png" data-background-opacity=0.15 data-background-size="cover">
             <script type="text/template">
               <style>
                 .container{
@@ -88,11 +88,37 @@
         <section data-transition="convex">
           <section data-markdown data-auto-animate>
             <script type="text/template">
+              <!-- .slide: data-background-image="res/context.jpg" data-background-opacity="0.15" data-background-size="contain" -->
+              ## Context
+              ----
+
+              * Cyber-Physical Systems (CPSs) are difficult to engineer, e.g. because of **physical world heterogeneity**
+                - Internet of Things
+                - Industry 4.0 +
+            </script>
+          </section>
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              <!-- .slide: data-background-image="res/context.jpg" data-background-opacity="0.15" data-background-size="contain" -->
+              ## Context
+              ----
+
+              * Cyber-Physical Systems (CPSs) are difficult to engineer, e.g. because of **physical world heterogeneity**
+                - Internet of Things
+                - Industry 4.0 +
+              * **Digital Twins** (DTs) are becoming a cornerstone paradigm to deal with this
+                - uniform access to CPSs resources and devices
+                - **better information** from raw CPSs data
+            </script>
+          </section>
+
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
               <!-- .slide: data-background-image="res/motivations.jpg" data-background-opacity="0.15" data-background-size="contain" -->
               ## Motivation
               ----
 
-              * Achieving goals in pervasive environments requires **context awareness** to adapt to environment dynamics
+              * CPSs and DTs are usually **manually designed** by domain experts
             </script>
           </section>
           <section data-markdown data-auto-animate>
@@ -101,11 +127,10 @@
               ## Motivation
               ----
 
-              * Achieving goals in pervasive environments requires **context awareness** to adapt to environment dynamics
-              * **Causal models** (i.e. networks of cause-effect relations)
-                - can deliver such awareness
-                - express causation, not mere correlation
-                - uniformly enable prediction, "what-if" analysis, planning, diagnosis, explainability
+              * CPSs and DTs are usually **manually designed** by domain experts
+              * Requires *design-time, expert, complete* knowledge about **domain variables** and their **relationships**
+
+              <p style="color: red"> <em>What if that's not possible?</em> </p>
             </script>
           </section>
           <section data-markdown data-auto-animate>
@@ -114,114 +139,73 @@
               ## Motivation
               ----
 
-              * We embed causal models in software programs all the time!
-                - e.g. `IF cause THEN effects`
-                - e.g. `cause.callback(effects)`
-                - e.g. `belief :- intention.`
-            </script>
-          </section>
-          <section data-markdown data-auto-animate>
-            <script type="text/template">
-              <!-- .slide: data-background-image="res/motivations.jpg" data-background-opacity="0.15" data-background-size="contain" -->
-              ## Motivation
-              ----
+              * DTs are usually **manually designed** by domain experts, and then developed by software engineers
+              * Requires *design-time, expert, complete* knowledge about **domain variables** and their **relationships**
 
-              * We embed causal models in software programs all the time!
-                - e.g. `IF cause THEN effects`
-                - e.g. `cause.callback(effects)`
-                - e.g. `belief :- intention.`
-              * Requires *design-time, expert, domain knowledge*
-            </script>
-          </section>
-          <section data-markdown data-auto-animate>
-            <script type="text/template">
-              <!-- .slide: data-background-image="res/motivations.jpg" data-background-opacity="0.15" data-background-size="contain" -->
-              ## Motivation
-              ----
+              <p style="color: red"> <em>What if that's not possible?</em> </p>
 
-              * We embed causal models in software programs all the time!
-                - e.g. `IF cause THEN effects`
-                - e.g. `cause.callback(effects)`
-                - e.g. `belief :- intention.`
-              * Requires *design-time, expert, domain knowledge*
-
-              <p style="color: red"> <em>What if that's not available?</em> </p>
+              * The norm rather than the exception in modern complex CPSs...
             </script>
           </section>
 
           <section data-markdown data-auto-animate>
             <script type="text/template">
-              <!-- .slide: data-background-image="res/learn.jpg" data-background-opacity="0.15" data-background-size="contain" -->
+              <!-- .slide: data-background-image="res/learning.jpg" data-background-opacity="0.15" data-background-size="contain" -->
               ## Goal
               ----
 
-              **Learn** causal networks at **run-time**!
+              **Learn** cause-effect relationships at **run-time**!
             </script>
           </section>
           <section data-markdown data-auto-animate>
             <script type="text/template">
-              <!-- .slide: data-background-image="res/learn.jpg" data-background-opacity="0.15" data-background-size="contain" -->
+              <!-- .slide: data-background-image="res/learning.jpg" data-background-opacity="0.15" data-background-size="contain" -->
               ## Goal
               ----
 
-              **Learn** causal networks at **run-time**!
+              **Learn** cause-effect relationships at **run-time**!
 
-              * Called **causal discovery** in related literature
-                - assumes *full observability* of environment...
-                - ...by an *individual* processing node...
-                - ...aimed at learning the *Global Causal Network* (GCN)---whole environment
+              * Causal Models (CMs) **augment** DTs with data-driven insights
+              * DTs provide suitable learning data to the learning pipeline
             </script>
           </section>
           <section data-markdown data-auto-animate>
             <script type="text/template">
-              <!-- .slide: data-background-image="res/learn.jpg" data-background-opacity="0.15" data-background-size="contain" -->
+              <!-- .slide: data-background-image="res/learning.jpg" data-background-opacity="0.15" data-background-size="contain" -->
               ## Goal
               ----
 
-              **Learn** causal networks at **run-time**!
+              **Learn** cause-effect relationships at **run-time**!
 
-              * Called **causal discovery** in related literature
-                - assumes *full observability* of environment...
-                - ...by an *individual* processing node...
-                - ...aimed at learning the *Global Causal Network* (GCN)---whole environment
-
-              <p style="color: red"> <em>What if that's not feasible?</em> </p>
+              * The resulting "Causal DT" enables
+                - to *reveal* unexpected cause-effect relationships
             </script>
           </section>
           <section data-markdown data-auto-animate>
             <script type="text/template">
-              <!-- .slide: data-background-image="res/distributed.jpg" data-background-opacity="0.15" data-background-size="cover" -->
-              ## Motivation
-              ----
-
-              * Pervasive computing infrastructures are **distributed** in nature
-                - sensors and actuators scattered in the environment
-                - 3-tier processing architecture from Edge-to-Cloud
-                - processing nodes have **partial observability/control**
-            </script>
-          </section>
-          <section data-markdown data-auto-animate>
-            <script type="text/template">
-              <!-- .slide: data-background-image="res/distributed.jpg" data-background-opacity="0.15" data-background-size="cover" -->
-              ## Motivation
-              ----
-
-              * Pervasive computing infrastructures are **distributed** in nature
-                - sensors and actuators scattered in the environment
-                - 3-tier processing architecture from Edge-to-Cloud
-                - processing nodes have **partial observability/control**
-              * *Individual Causal Networks* (ICNs) do not account for *influences* amongst nodes
-            </script>
-          </section>
-          <section data-markdown data-auto-animate>
-            <script type="text/template">
-              <!-- .slide: data-background-image="res/learn.jpg" data-background-opacity="0.15" data-background-size="cover" -->
+              <!-- .slide: data-background-image="res/learning.jpg" data-background-opacity="0.15" data-background-size="contain" -->
               ## Goal
               ----
 
-              <p style="color: green"> Learn a <strong>Minimal Causal Network</strong> (MCN) with multiple nodes with partial observability/control! </p>
+              **Learn** cause-effect relationships at **run-time**!
 
-              <img data-src="res/2024-comorea-causal-mas-scenario-v2.png" width="70%">
+              * The resulting "Causal DT" enables
+                - to *reveal* unexpected cause-effect relationships
+                - to translate information into *actionable knowledge*
+            </script>
+          </section>
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              <!-- .slide: data-background-image="res/learning.jpg" data-background-opacity="0.15" data-background-size="contain" -->
+              ## Goal
+              ----
+
+              **Learn** cause-effect relationships at **run-time**!
+
+              * The resulting "Causal DT" enables
+                - to *reveal* unexpected cause-effect relationships
+                - to translate information into *actionable knowledge*
+                - to *plan* interventions on both the DT and the actual CPS to improve them
             </script>
           </section>
 
@@ -231,11 +215,34 @@
               ## Contribution
               ----
 
-              **Collaborative multi-node protocol for distributed causal discovery**
+              **Method to augment a DT with a Causal Model (CM) of the domain**
 
-              1. formulate learning and coordination problems
-              2. describe collaborative learning protocol
-              3. evaluate accuracy of MCN against ICN and GCN
+              1. define the learning pipeline
+            </script>
+          </section>
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              <!-- .slide: data-background-image="res/contribution.jpg" data-background-opacity="0.15" data-background-size="contain" -->
+              ## Contribution
+              ----
+
+              **Method to augment a DT with a Causal Model (CM) of the domain**
+
+              1. define the learning pipeline
+              2. design the augmentation architecture
+            </script>
+          </section>
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              <!-- .slide: data-background-image="res/contribution.jpg" data-background-opacity="0.15" data-background-size="contain" -->
+              ## Contribution
+              ----
+
+              **Method to augment a DT with a Causal Model (CM) of the domain**
+
+              1. define the learning pipeline
+              2. design the augmentation architecture
+              3. validate with real-world machinery
             </script>
           </section>
         </section>
