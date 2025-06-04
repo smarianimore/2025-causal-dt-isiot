@@ -103,11 +103,8 @@
               ## Context
               ----
 
-              * Cyber-Physical Systems (CPSs) are difficult to engineer, e.g. because of **physical world heterogeneity**
-                - Internet of Things
-                - Industry 4.0 +
               * **Digital Twins** (DTs) are becoming a cornerstone paradigm to deal with this
-                - uniform access to CPSs resources and devices
+                - **uniform access** to CPSs resources and devices
                 - **better information** from raw CPSs data
             </script>
           </section>
@@ -128,9 +125,9 @@
               ----
 
               * CPSs and DTs are usually **manually designed** by domain experts
-              * Requires *design-time, expert, complete* knowledge about **domain variables** and their **relationships**
+              * Requires *design-time, expert, complete* knowledge about domain variables and their relationships
 
-              <p style="color: red"> <em>What if that's not possible?</em> </p>
+              <p style="color: red"> <em>What if that's not available?</em> </p>
             </script>
           </section>
           <section data-markdown data-auto-animate>
@@ -140,9 +137,9 @@
               ----
 
               * DTs are usually **manually designed** by domain experts, and then developed by software engineers
-              * Requires *design-time, expert, complete* knowledge about **domain variables** and their **relationships**
+              * Requires *design-time, expert, complete* knowledge about domain variables and their relationships
 
-              <p style="color: red"> <em>What if that's not possible?</em> </p>
+              <p style="color: red"> <em>What if that's not available?</em> </p>
 
               * The norm rather than the exception in modern complex CPSs...
             </script>
@@ -154,7 +151,7 @@
               ## Goal
               ----
 
-              **Learn** cause-effect relationships at **run-time**!
+              <p style="color: green"> <em>Learn cause-effect relationships at run-time!</em> </p>
             </script>
           </section>
           <section data-markdown data-auto-animate>
@@ -163,10 +160,10 @@
               ## Goal
               ----
 
-              **Learn** cause-effect relationships at **run-time**!
+              <p style="color: green"> <em>Learn cause-effect relationships at run-time!</em> </p>
 
-              * Causal Models (CMs) **augment** DTs with data-driven insights
-              * DTs provide suitable learning data to the learning pipeline
+              * **Causal Models (CMs) augment DTs** with data-driven insights
+              * **DTs provide high-quality data** to the learning pipeline
             </script>
           </section>
           <section data-markdown data-auto-animate>
@@ -175,10 +172,10 @@
               ## Goal
               ----
 
-              **Learn** cause-effect relationships at **run-time**!
+              <p style="color: green"> <em>Learn cause-effect relationships at run-time!</em> </p>
 
-              * The resulting "Causal DT" enables
-                - to *reveal* unexpected cause-effect relationships
+              * The resulting "Causal DTs" enable to
+                - reveal **unexpected** cause-effect **relationships**
             </script>
           </section>
           <section data-markdown data-auto-animate>
@@ -187,11 +184,11 @@
               ## Goal
               ----
 
-              **Learn** cause-effect relationships at **run-time**!
+              <p style="color: green"> <em>Learn cause-effect relationships at run-time!</em> </p>
 
-              * The resulting "Causal DT" enables
-                - to *reveal* unexpected cause-effect relationships
-                - to translate information into *actionable knowledge*
+              * The resulting "Causal DTs" enable to
+                - reveal **unexpected** cause-effect **relationships**
+                - translate information into **actionable knowledge**
             </script>
           </section>
           <section data-markdown data-auto-animate>
@@ -200,22 +197,24 @@
               ## Goal
               ----
 
-              **Learn** cause-effect relationships at **run-time**!
+              <p style="color: green"> <em>Learn cause-effect relationships at run-time!</em> </p>
 
-              * The resulting "Causal DT" enables
-                - to *reveal* unexpected cause-effect relationships
-                - to translate information into *actionable knowledge*
-                - to *plan* interventions on both the DT and the actual CPS to improve them
+              * The resulting "Causal DTs" enable to
+                - reveal **unexpected** cause-effect **relationships**
+                - translate information into **actionable knowledge**
+                - **plan interventions** to improve both the DT and the actual CPS
             </script>
           </section>
+        </section>
 
+        <section data-transition="convex">
           <section data-markdown data-auto-animate>
             <script type="text/template">
               <!-- .slide: data-background-image="res/contribution.jpg" data-background-opacity="0.15" data-background-size="contain" -->
               ## Contribution
               ----
 
-              **Method to augment a DT with a Causal Model (CM) of the domain**
+              **Method to augment a DT with a CM of the domain**
 
               1. define the learning pipeline
             </script>
@@ -226,7 +225,7 @@
               ## Contribution
               ----
 
-              **Method to augment a DT with a Causal Model (CM) of the domain**
+              **Method to augment a DT with a CM of the domain**
 
               1. define the learning pipeline
               2. design the augmentation architecture
@@ -238,7 +237,7 @@
               ## Contribution
               ----
 
-              **Method to augment a DT with a Causal Model (CM) of the domain**
+              **Method to augment a DT with a CM of the domain**
 
               1. define the learning pipeline
               2. design the augmentation architecture
@@ -254,7 +253,16 @@
               ## Preliminaries
               ----
 
-              * Causal models capture cause-effect relationships in *networks* of interacting variables
+              * **CMs capture cause-effect** relationships amongst variables in a domain
+            </script>
+          </section>
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              <!-- .slide: data-background-image="res/causal-discovery.jpg" data-background-opacity="0.15" data-background-size="cover" -->
+              ## Preliminaries
+              ----
+
+              * **CMs capture cause-effect** relationships amongst variables in a domain
               * Purely statistical ML approaches capture mere *correlation*, instead
             </script>
           </section>
@@ -264,10 +272,9 @@
               ## Preliminaries
               ----
 
-              * Causal models capture cause-effect relationships in *networks* of interacting variables
+              * **CMs capture cause-effect** relationships amongst variables in a domain
               * Purely statistical ML approaches capture mere *correlation*, instead
-
-              Cornerstone to causal discovery is the notion of **intervention**
+              * Structural CM = Directed Acyclic Graph (DAG) + Structural Equations (SEs)
             </script>
           </section>
           <section data-markdown data-auto-animate>
@@ -276,7 +283,9 @@
               ## Preliminaries
               ----
 
-              * [TBD] CM = DAG + Structural Equations
+              * Structural CM = Directed Acyclic Graph (DAG) + Structural Equations (SEs)
+
+              <img data-id="pic" data-src="res/example-dag.png">
             </script>
           </section>
           <section data-markdown data-auto-animate>
@@ -285,7 +294,131 @@
               ## Preliminaries
               ----
 
-              * [TBD] Learning CMs
+              <style>
+                .container{
+                  display: flex;
+                }
+                .col{
+                  flex: 1;
+                }
+              </style>
+              <div class="container">
+                <div class="col">
+                  <img data-id="pic" data-src="res/example-dag-2.png" width="200%">
+                </div>
+                <div class="col">
+                  <ul>
+                    <li> In a causal DAG </li>
+                    <ul>
+                      <li> nodes are system variables </li>
+                      <li> directed edges are cause -> effect relations </li>
+                    </ul>
+                  </ul>
+                </div>
+              </div>
+            </script>
+          </section>
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              <!-- .slide: data-background-image="res/causal-discovery.jpg" data-background-opacity="0.15" data-background-size="cover" -->
+              ## Preliminaries
+              ----
+
+              <style>
+                .container{
+                  display: flex;
+                }
+                .col{
+                  flex: 1;
+                }
+              </style>
+              <div class="container">
+                <div class="col">
+                  <img data-id="pic" data-src="res/example-dag-2.png" width="200%">
+                </div>
+                <div class="col">
+                  <ul>
+                    <li> In a causal DAG </li>
+                    <ul>
+                      <li> nodes are system variables </li>
+                      <li> directed edges are cause -> effect relations </li>
+                    </ul>
+                  </ul>
+                </div>
+              </div>
+              <p> The DAG enables <strong>qualitative (causal) reasoning</strong> </p>
+            </script>
+          </section>
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              <!-- .slide: data-background-image="res/causal-discovery.jpg" data-background-opacity="0.15" data-background-size="cover" -->
+              ## Preliminaries
+              ----
+
+              <style>
+                .container{
+                  display: flex;
+                }
+                .col{
+                  flex: 1;
+                }
+              </style>
+              <div class="container">
+                <div class="col">
+                  <ul>
+                    <li> In causal SEs </li>
+                    <ul>
+                      <li> variables are...system variables :) </li>
+                      <li> equations quantify <em>how</em> variables' influence each other </li>
+                    </ul>
+                  </ul>
+                </div>
+                <div class="col">
+                  <img data-id="pic" data-src="res/example-se.PNG" width="200%">
+                </div>
+              </div>
+            </script>
+          </section>
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              <!-- .slide: data-background-image="res/causal-discovery.jpg" data-background-opacity="0.15" data-background-size="cover" -->
+              ## Preliminaries
+              ----
+
+              <style>
+                .container{
+                  display: flex;
+                }
+                .col{
+                  flex: 1;
+                }
+              </style>
+              <div class="container">
+                <div class="col">
+                  <ul>
+                    <li> In causal SEs </li>
+                    <ul>
+                      <li> variables are...system variables :) </li>
+                      <li> equations quantify <em>how</em> variables' influence each other </li>
+                    </ul>
+                  </ul>
+                </div>
+                <div class="col">
+                  <img data-id="pic" data-src="res/example-se.PNG" width="200%">
+                </div>
+              </div>
+              <p> The SEs of a SCM enables <strong>quantitative (causal) reasoning</strong> </p>
+            </script>
+          </section>
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              <!-- .slide: data-background-image="res/causal-discovery.jpg" data-background-opacity="0.15" data-background-size="cover" -->
+              ## Preliminaries
+              ----
+
+              * SCMs can be **learnt from data**
+                - *causal discovery* -> causal DAG
+                - *causal inference* -> causal SEs
             </script>
           </section>
         </section>
