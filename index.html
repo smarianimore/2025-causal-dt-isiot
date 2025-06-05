@@ -589,13 +589,23 @@
               ## Deployment scenario
               ----
 
-              <img data-src="res/icasa-fog.png" width="33%">
+              <img data-src="res/microfactory_v2.jpg" width="70%">
+              <p> Fischertechnik Training Factory Industry 4.0 </p>
             </script>
           </section>
-
           <section data-markdown data-auto-animate>
             <script type="text/template">
-              ## Learnt causal Models
+              <!-- .slide: data-background-image="res/microfactory_v2.jpg" data-background-opacity="0.15" data-background-size="cover" -->
+              ## Deployment scenario
+              ----
+
+              <img data-src="res/factory_scheme-1.PNG" width="90%">
+            </script>
+          </section>
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              <!-- .slide: data-background-image="res/microfactory_v2.jpg" data-background-opacity="0.15" data-background-size="cover" -->
+              ## Deployment scenario
               ----
 
               <style>
@@ -608,18 +618,24 @@
               </style>
               <div class="container">
                 <div class="col">
-                  <img data-src="res/ground-truth-partitioned.png">
+                  <img data-id="indexed" data-src="res/factory_scheme-1-half.PNG" width="60%">
                 </div>
                 <div class="col">
-                  <img data-src="res/icasa-fog.png" width="60%">
+                  <br>
+                  <ul>
+                    <li> 1 DT $\forall$ devices (eg drill, cutter, ...) </li>
+                    <li> 1 DT for the whole station </li>
+                    <li> 1 CM for the whole station </li>
+                  </ul>
                 </div>
               </div>
+              SCM learnt on data from <em>all</em> DTs
             </script>
           </section>
-
           <section data-markdown data-auto-animate>
             <script type="text/template">
-              ## Example usage: control
+              <!-- .slide: data-background-image="res/microfactory_v2.jpg" data-background-opacity="0.15" data-background-size="cover" -->
+              ## Results
               ----
 
               <style>
@@ -632,29 +648,163 @@
               </style>
               <div class="container">
                 <div class="col">
-                  <img data-src="res/ground-truth-partitioned.png">
+                  <img data-src="res/factory_scheme-1-half.PNG" width="60%">
                 </div>
                 <div class="col">
-                  <img data-src="res/icasa-fog.png" width="40%">
+                  <img data-src="res/index-DirectLiNGAM_causal_graph_inference-EDIT.png" width="70%">
                 </div>
               </div>
-              <ul>
-                <li> Ground truth GCN of <a href="https://self-star.imag.fr/">iCasa</a> (simulated) smart home </li>
-                <li> 2 Fog nodes: "red" (girl, $\mathcal{N}_1$) and "blue" (boy, $\mathcal{N}_2$) </li>
-                <li> Circles are actuators and boxes are sensors </li>
-              </ul>
+              <em>Bayesian Network</em> to model DAG,<br> <em>Conditional Probability Tables</em> (CPTs) to model SEs
             </script>
           </section>
           <section data-markdown data-auto-animate>
             <script type="text/template">
-              <!-- .slide: data-background-image="res/metrics.jpg" data-background-opacity="0.15" data-background-size="contain" -->
-              ## Example usage: monitoring
+              <!-- .slide: data-background-image="res/microfactory_v2.jpg" data-background-opacity="0.15" data-background-size="cover" -->
+              ## Results
               ----
 
-              * **false positives** (FP): learnt edges not in ground truth (GT)
-              * **false negatives** (FN): edges in GT but not learnt
-              * (extended) **Structural Hamming Distance** (SHD): FP + FN + unknowns (missing edges as crossing partial observability boundaries)
-              * **time**: to learn network (ICN, MCN, or GCN)
+              <style>
+                .container{
+                  display: flex;
+                }
+                .col{
+                  flex: 1;
+                }
+              </style>
+              <div class="container">
+                <div class="col">
+                  <br>
+                  <ul>
+                    <li> Partitioned: state left, performance right </li>
+                    <li> Unexpected: dept. DT causes device DTs </li>
+                    <li> Expected: OEE causal "chain" </li>
+                  </ul>
+                </div>
+                <div class="col">
+                  <img data-src="res/index-DirectLiNGAM_causal_graph_inference-EDIT.png" width="80%">
+                </div>
+              </div>
+            </script>
+          </section>
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              <!-- .slide: data-background-image="res/microfactory_v2.jpg" data-background-opacity="0.15" data-background-size="cover" -->
+              ## Deployment scenario
+              ----
+
+              <img data-src="res/factory_scheme-2.png" width="90%">
+            </script>
+          </section>
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              <!-- .slide: data-background-image="res/microfactory_v2.jpg" data-background-opacity="0.15" data-background-size="cover" -->
+              ## Deployment scenario
+              ----
+
+              <style>
+                .container{
+                  display: flex;
+                }
+                .col{
+                  flex: 1;
+                }
+              </style>
+              <div class="container">
+                <div class="col">
+                  <p align="left">Again:</p>
+                  <ul>
+                    <li> 1 DT $\forall$ devices (eg drill, cutter, ...) </li>
+                    <li> 1 DT for the whole station </li>
+                    <li> 1 CM for the whole station </li>
+                  </ul>
+                </div>
+                <div class="col">
+                  <img data-id="indexed" data-src="res/factory_scheme-2-half.png" width="60%">
+                </div>
+              </div>
+              SCM learnt on data from <em>all</em> DTs
+            </script>
+          </section>
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              <!-- .slide: data-background-image="res/microfactory_v2.jpg" data-background-opacity="0.15" data-background-size="cover" -->
+              ## Results
+              ----
+
+              <style>
+                .container{
+                  display: flex;
+                }
+                .col{
+                  flex: 1;
+                }
+              </style>
+              <div class="container">
+                <div class="col">
+                  <img data-src="res/mps-DirectLiNGAM_causal_graph_inference-EDIT.png" width="80%">
+                </div>
+                <div class="col">
+                  <img data-src="res/factory_scheme-2-half.png" width="50%">
+                </div>
+              </div>
+              Again: <em>Bayesian Network</em> to model DAG,<br> <em>Conditional Probability Tables</em> (CPTs) to model SEs
+            </script>
+          </section>
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              <!-- .slide: data-background-image="res/microfactory_v2.jpg" data-background-opacity="0.15" data-background-size="cover" -->
+              ## Results
+              ----
+
+              <style>
+                .container{
+                  display: flex;
+                }
+                .col{
+                  flex: 1;
+                }
+              </style>
+              <div class="container">
+                <div class="col">
+                  <img data-src="res/mps-DirectLiNGAM_causal_graph_inference-EDIT.png">
+                </div>
+                <div class="col">
+                  <br>
+                  <ul>
+                    <li> Unclear partition this time... </li>
+                    <li> Unexpected: dept. DT causes device DTs </li>
+                    <li> Expected: OEE causal "chain" </li>
+                  </ul>
+                </div>
+              </div>
+            </script>
+          </section>
+        </section>
+
+        <section data-transition="convex">
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              ## Exploitation of SCMs
+              ----
+
+
+            </script>
+          </section>
+
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              ## Intelligent control
+              ----
+
+
+            </script>
+          </section>
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              ## Intelligent monitoring
+              ----
+
+
             </script>
           </section>
         </section>
