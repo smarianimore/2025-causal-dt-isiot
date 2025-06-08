@@ -821,6 +821,26 @@
 
               Can we use SCMs for **quantitative reasoning**?
 
+            </script>
+          </section>
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              ## Exploitation of SCMs
+              ----
+
+              Can we use SCMs for **quantitative reasoning**?
+
+              * *"How can we achieve a specific OEE level?"*
+              * *"What would happen if the gripper was mostly in state 'READY'?"*
+            </script>
+          </section>
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              ## Exploitation of SCMs
+              ----
+
+              Can we use SCMs for **quantitative reasoning**?
+
               * *"How can we achieve a specific OEE level?"*
               * *"What would happen if the gripper was mostly in state 'READY'?"*
 
@@ -829,10 +849,85 @@
           </section>
           <section data-markdown data-auto-animate>
             <script type="text/template">
-              ## Exploitation of SCMs
+              ## Intelligent control: "planning"
               ----
 
+              By fixing, on the SCM, the value of a *target* variable
+              (the **effect** that we want to achieve)
+              the SCM itself tells us which values other related variables
+              (especially, parents, hence **causes**)
+              must take to achieve the intended state
+            </script>
+          </section>
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              ## Intelligent control: "planning"
+              ----
 
+              <img data-src="res/index-DirectLiNGAM_causal_graph_inference-evidence-planning-1.png" width="20%">
+            </script>
+          </section>
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              ## Intelligent control
+              ----
+
+              <style>
+                .container{
+                  display: flex;
+                }
+                .col{
+                  flex: 1;
+                }
+                .bigger_col{
+                  flex: 1.5;
+                }
+              </style>
+              <div class="container">
+                <div class="col">
+                  <img data-src="res/index-DirectLiNGAM_causal_graph_inference-evidence-planning-1.png" width="50%">
+                </div>
+                <div class="bigger_col">
+                  <p align="left"> To get specific <strong>O</strong>verall <strong>E</strong>quipment <strong>E</strong>fficiency </p>
+                  <ul>
+                    <li> conveyor at full performance </li>
+                    <li> cutter, too </li>
+                    <li> drill, instead, may have lower </li>
+                  </ul>
+                </div>
+              </div>
+            </script>
+          </section>
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              ## Intelligent control
+              ----
+
+              <style>
+                .container{
+                  display: flex;
+                }
+                .col{
+                  flex: 1;
+                }
+                .bigger_col{
+                  flex: 1.5;
+                }
+              </style>
+              <div class="container">
+                <div class="col">
+                  <img data-src="res/index-DirectLiNGAM_causal_graph_inference-evidence-planning-1.png" width="50%">
+                </div>
+                <div class="bigger_col">
+                  <p align="left"> To get specific <strong>O</strong>verall <strong>E</strong>quipment <strong>E</strong>fficiency </p>
+                  <ul>
+                    <li> conveyor at full performance </li>
+                    <li> cutter, too </li>
+                    <li> drill, instead, may have lower </li>
+                  </ul>
+                  <p align="left"> The SCM has learnt how to achieve a goal :) </p>
+                </div>
+              </div>
             </script>
           </section>
         </section>
