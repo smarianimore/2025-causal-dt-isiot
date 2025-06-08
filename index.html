@@ -651,7 +651,7 @@
                   <img data-src="res/factory_scheme-1-half.PNG" width="60%">
                 </div>
                 <div class="col">
-                  <img data-src="res/index-DirectLiNGAM_causal_graph_inference-EDIT.png" width="70%">
+                  <img data-src="res/index-DirectLiNGAM_causal_graph_inference-EDIT-alpha.png" width="70%">
                 </div>
               </div>
               <em>Bayesian Network</em> to model DAG,<br> <em>Conditional Probability Tables</em> (CPTs) to model SEs
@@ -681,7 +681,7 @@
                   </ul>
                 </div>
                 <div class="col">
-                  <img data-src="res/index-DirectLiNGAM_causal_graph_inference-EDIT.png" width="80%">
+                  <img data-src="res/index-DirectLiNGAM_causal_graph_inference-EDIT-alpha.png" width="80%">
                 </div>
               </div>
             </script>
@@ -741,7 +741,7 @@
               </style>
               <div class="container">
                 <div class="col">
-                  <img data-src="res/mps-DirectLiNGAM_causal_graph_inference-EDIT.png" width="80%">
+                  <img data-src="res/mps-DirectLiNGAM_causal_graph_inference-EDIT-alpha.png" width="80%">
                 </div>
                 <div class="col">
                   <img data-src="res/factory_scheme-2-half.png" width="50%">
@@ -766,7 +766,7 @@
               </style>
               <div class="container">
                 <div class="col">
-                  <img data-src="res/mps-DirectLiNGAM_causal_graph_inference-EDIT.png">
+                  <img data-src="res/mps-DirectLiNGAM_causal_graph_inference-EDIT-alpha.png">
                 </div>
                 <div class="col">
                   <br>
@@ -781,7 +781,7 @@
           </section>
         </section>
 
-        <section data-transition="convex">
+        <section data-transition="convex" data-background-image="res/exploit-scm.jpg" data-background-opacity="0.15" data-background-size="contain">
           <section data-markdown data-auto-animate>
             <script type="text/template">
               ## Exploitation of SCMs
@@ -947,7 +947,7 @@
               ## Intelligent monitoring
               ----
 
-              <img data-src="res/mps-DirectLiNGAM_causal_graph_inference-evidence-whatif-1.png" width="50%">
+              <img data-src="res/mps-DirectLiNGAM_causal_graph_inference-evidence-whatif-1-alpha.png" width="50%">
             </script>
           </section>
           <section data-markdown data-auto-animate>
@@ -968,7 +968,7 @@
               </style>
               <div class="container">
                 <div class="col">
-                  <img data-src="res/mps-DirectLiNGAM_causal_graph_inference-evidence-whatif-1.png" width="100%">
+                  <img data-src="res/mps-DirectLiNGAM_causal_graph_inference-evidence-whatif-1-alpha.png" width="100%">
                 </div>
                 <div class="bigger_col">
                   <p align="left"> If we can keep gripper ready (=1) </p>
@@ -999,7 +999,7 @@
               </style>
               <div class="container">
                 <div class="col">
-                  <img data-src="res/mps-DirectLiNGAM_causal_graph_inference-evidence-whatif-1.png" width="100%">
+                  <img data-src="res/mps-DirectLiNGAM_causal_graph_inference-evidence-whatif-1-alpha.png" width="100%">
                 </div>
                 <div class="bigger_col">
                   <p align="left"> If we can keep gripper ready (=1) </p>
@@ -1015,47 +1015,71 @@
           </section>
         </section>
 
-        <section data-transition="convex">
+        <section data-transition="convex" data-background-image="res/conclusion.jpg" data-background-opacity="0.25" data-background-size="cover">
           <section data-markdown data-auto-animate>
             <script type="text/template">
-              <!-- .slide: data-background-image="res/conclusion.jpg" data-background-opacity="0.25" data-background-size="cover" -->
               ## Conclusion
               ----
 
-              * Collaboration deals with partial observability and **improves** individually learnt causal networks
+              * **Causal Models** provide value for **human supervision** of IIoT deployments
+                - interpretability
+                - uniform support to decision-making
             </script>
           </section>
           <section data-markdown data-auto-animate>
             <script type="text/template">
-              <!-- .slide: data-background-image="res/conclusion.jpg" data-background-opacity="0.25" data-background-size="cover" -->
               ## Conclusion
               ----
 
-              * Collaboration deals with partial observability and **improves** individually learnt causal networks
-              * Merging improved networks (the MCNs) can lead to **better GCN** than learning with full observability
+              * **Causal Models** provide value for **human supervision** of IIoT deployments
+              * **Digital Twins** enable data-driven learning despite **CPS heterogeneity**
+                - uniform access to raw data
+                - pre-processing into higher-level information
             </script>
           </section>
           <section data-markdown data-auto-animate>
             <script type="text/template">
-              <!-- .slide: data-background-image="res/conclusion.jpg" data-background-opacity="0.25" data-background-size="cover" -->
               ## Conclusion
               ----
 
-              * Collaboration deals with partial observability and **improves** individually learnt causal networks
-              * Merging improved networks (the MCNs) can lead to **better GCN** than learning with full observability
-              * Mutual exclusion amongst interventions can be dealt with even in **fully decentralised** settings with SOTA methods (gossiping, leader election, ...)
+              * **Causal Models** provide value for human supervision of IIoT deployments
+              * **Digital Twins** enable data-driven learning despite **CPS heterogeneity**
+              * **Causally Augmented DTs** provide support for
+                - better CPS monitoring (what-if, prediction)
+                - CPS design refinement / adaptation
+                - better CPS control (planning)
             </script>
           </section>
           <section data-markdown data-auto-animate>
             <script type="text/template">
-              <!-- .slide: data-background-image="res/crossroad.jpg" data-background-opacity="0.25" data-background-size="cover" -->
               ## Outlook
               ----
 
-              * Assess performance with **increasing agents**
-              * Assess convergence properties of **coordination protocol** in fully decentralised setting
-              * Benchmark against known causal networks of **increasing complexity**
-              * Assess impact of different individual learning algorithms on collaboration performance
+              * **Automate** decision-making
+                - tighter coupling, CM can control DT
+            </script>
+          </section>
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              ## Outlook
+              ----
+
+              * **Automate** decision-making
+              * **Extend** deployment scenario
+                - broader operating conditions (simulate faults)
+            </script>
+          </section>
+          <section data-markdown data-auto-animate>
+            <script type="text/template">
+              ## Outlook
+              ----
+
+              * **Automate** decision-making
+              * **Extend** deployment scenario
+              * **Validate** learnt models
+                - against ground truth
+                - compare CD/CI algorithms
+                - auto-tune best CM
             </script>
           </section>
         </section>
